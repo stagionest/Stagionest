@@ -70,3 +70,51 @@ font-size:18px;
 }
 
 }
+/* ===== STAGIONEST BRANDED HEADER ===== */
+
+.site-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 22px 6%;
+    display: flex;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.site-logo {
+    width: 155px;
+    height: auto;
+    display: block;
+}
+
+/* ===== MOBILE HEADER ===== */
+
+@media (max-width: 768px) {
+    .site-header {
+        padding: 18px 5%;
+    }
+
+    .site-logo {
+        width: 125px;
+    }
+}
+/* ===== PREMIUM HEADER FINISH ===== */
+
+.site-header {
+    padding: 18px 6%;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.06);
+}
+
+.site-logo {
+    width: 145px;
+    height: auto;
+}
