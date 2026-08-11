@@ -10,7 +10,7 @@ body {
 }
 
 .hero {
-    background: url('hero.jpg') center center/cover no-repeat;
+    background: url('Images/hero.jpg') center center/cover no-repeat;
     min-height: 100vh;
     display: flex;
     justify-content: center;
