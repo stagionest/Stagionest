@@ -59,13 +59,15 @@ button {
     align-items: center;
     justify-content: space-between;
 }
-
 .logo {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    font-weight: 800;
-    font-size: 22px;
+}
+
+.logo img {
+    width: 150px;
+    height: auto;
+    display: block;
 }
 
 .logo-mark {
