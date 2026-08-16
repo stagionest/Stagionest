@@ -1,11 +1,10 @@
 /* =========================================================
-   STAGIONEST
-   Main JavaScript
+   STAGIONEST JAVASCRIPT
    ========================================================= */
 
 
 /* =========================================================
-   MOBILE NAVIGATION
+   MOBILE MENU
    ========================================================= */
 
 const menuToggle = document.getElementById("menuToggle");
@@ -13,37 +12,17 @@ const mainNav = document.getElementById("mainNav");
 
 if (menuToggle && mainNav) {
 
-    menuToggle.addEventListener("click", function () {
-
-        const isOpen = mainNav.classList.toggle("active");
-
-        menuToggle.setAttribute(
-            "aria-expanded",
-            isOpen ? "true" : "false"
-        );
-
-        menuToggle.textContent = isOpen ? "✕" : "☰";
-
+    menuToggle.addEventListener("click", () => {
+        mainNav.classList.toggle("active");
     });
 
 
-    /* Close menu after clicking a navigation link */
-
     const navLinks = mainNav.querySelectorAll("a");
 
-    navLinks.forEach(function (link) {
+    navLinks.forEach(link => {
 
-        link.addEventListener("click", function () {
-
+        link.addEventListener("click", () => {
             mainNav.classList.remove("active");
-
-            menuToggle.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-            menuToggle.textContent = "☰";
-
         });
 
     });
@@ -52,94 +31,253 @@ if (menuToggle && mainNav) {
 
 
 /* =========================================================
-   ONE ROOM — MULTIPLE STYLES SLIDESHOW
+   PORTFOLIO SLIDESHOW
    ========================================================= */
 
-const styleSlides = document.querySelectorAll(".style-slide");
-const styleDots = document.querySelectorAll(".style-dot");
+const slides = document.querySelectorAll(".portfolio-slide");
+const previousButton = document.getElementById("portfolioPrev");
+const nextButton = document.getElementById("portfolioNext");
+const pauseButton = document.getElementById("portfolioPause");
+const slideCounter = document.getElementById("slideCounter");
 
-const stylePrev = document.getElementById("stylePrev");
-const styleNext = document.getElementById("styleNext");
-
-let currentStyle = 0;
+let currentSlide = 0;
+let autoplay = true;
+let autoplayTimer;
 
 
 /* Show selected slide */
 
-function showStyle(index) {
+function showSlide(index) {
 
-    if (!styleSlides.length) {
+    if (!slides.length) {
         return;
     }
 
-    if (index < 0) {
-        currentStyle = styleSlides.length - 1;
-    }
-
-    else if (index >= styleSlides.length) {
-        currentStyle = 0;
-    }
-
-    else {
-        currentStyle = index;
+    if (index >= slides.length) {
+        currentSlide = 0;
+    } else if (index < 0) {
+        currentSlide = slides.length - 1;
+    } else {
+        currentSlide = index;
     }
 
 
-    styleSlides.forEach(function (slide, i) {
+    slides.forEach((slide, i) => {
 
         slide.classList.toggle(
             "active",
-            i === currentStyle
+            i === currentSlide
         );
 
     });
 
 
-    styleDots.forEach(function (dot, i) {
+    if (slideCounter) {
 
-        dot.classList.toggle(
-            "active",
-            i === currentStyle
-        );
+        slideCounter.textContent =
+            `${currentSlide + 1} / ${slides.length}`;
+
+    }
+
+}
+
+
+/* Next */
+
+if (nextButton) {
+
+    nextButton.addEventListener("click", () => {
+
+        showSlide(currentSlide + 1);
+
+        restartAutoplay();
 
     });
 
 }
 
 
-/* Previous button */
+/* Previous */
 
-if (stylePrev) {
+if (previousButton) {
 
-    stylePrev.addEventListener("click", function () {
+    previousButton.addEventListener("click", () => {
 
-        showStyle(currentStyle - 1);
+        showSlide(currentSlide - 1);
 
-    });
-
-}
-
-
-/* Next button */
-
-if (styleNext) {
-
-    styleNext.addEventListener("click", function () {
-
-        showStyle(currentStyle + 1);
+        restartAutoplay();
 
     });
 
 }
 
 
-/* Dot buttons */
+/* =========================================================
+   AUTOPLAY
+   ========================================================= */
 
-styleDots.forEach(function (dot, index) {
+function startAutoplay() {
 
-    dot.addEventListener("click", function () {
+    clearInterval(autoplayTimer);
 
-        showStyle(index);
+    if (!autoplay) {
+        return;
+    }
+
+    autoplayTimer = setInterval(() => {
+
+        showSlide(currentSlide + 1);
+
+    }, 5000);
+
+}
+
+
+function restartAutoplay() {
+
+    startAutoplay();
+
+}
+
+
+/* Pause / Resume */
+
+if (pauseButton) {
+
+    pauseButton.addEventListener("click", () => {
+
+        autoplay = !autoplay;
+
+        if (autoplay) {
+
+            pauseButton.textContent = "Pause";
+
+            startAutoplay();
+
+        } else {
+
+            pauseButton.textContent = "Play";
+
+            clearInterval(autoplayTimer);
+
+        }
+
+    });
+
+}
+
+
+/* Start slideshow */
+
+showSlide(0);
+startAutoplay();
+
+
+/* =========================================================
+   TOUCH / SWIPE SUPPORT
+   ========================================================= */
+
+const portfolioStage =
+    document.querySelector(".portfolio-stage");
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+if (portfolioStage) {
+
+    portfolioStage.addEventListener("touchstart", event => {
+
+        touchStartX = event.changedTouches[0].screenX;
+
+    });
+
+
+    portfolioStage.addEventListener("touchend", event => {
+
+        touchEndX = event.changedTouches[0].screenX;
+
+        handleSwipe();
+
+    });
+
+}
+
+
+function handleSwipe() {
+
+    const difference =
+        touchStartX - touchEndX;
+
+    if (Math.abs(difference) < 50) {
+        return;
+    }
+
+    if (difference > 0) {
+
+        showSlide(currentSlide + 1);
+
+    } else {
+
+        showSlide(currentSlide - 1);
+
+    }
+
+    restartAutoplay();
+
+}
+
+
+/* =========================================================
+   ONE ROOM — DIFFERENT STYLES
+   ========================================================= */
+
+const styleMainImage =
+    document.getElementById("styleMainImage");
+
+const styleLabel =
+    document.getElementById("styleLabel");
+
+const styleOptions =
+    document.querySelectorAll(".style-option");
+
+
+styleOptions.forEach(option => {
+
+    option.addEventListener("click", () => {
+
+        const newImage =
+            option.getAttribute("data-image");
+
+        const newTitle =
+            option.getAttribute("data-title");
+
+
+        if (styleMainImage) {
+
+            styleMainImage.src = newImage;
+
+            styleMainImage.alt =
+                `${newTitle} virtual staging style`;
+
+        }
+
+
+        if (styleLabel) {
+
+            styleLabel.textContent =
+                newTitle;
+
+        }
+
+
+        styleOptions.forEach(item => {
+
+            item.classList.remove("active");
+
+        });
+
+
+        option.classList.add("active");
 
     });
 
@@ -147,73 +285,22 @@ styleDots.forEach(function (dot, index) {
 
 
 /* =========================================================
-   OPTIONAL AUTO SLIDESHOW
+   PREVENT EMPTY CTA LINKS FROM JUMPING
    ========================================================= */
 
-/*
-   The slideshow automatically moves every 5 seconds.
+const emptyLinks =
+    document.querySelectorAll('a[href="#"]');
 
-   If you do NOT want automatic movement,
-   delete or comment out the block below.
-*/
+emptyLinks.forEach(link => {
 
-let styleTimer = setInterval(function () {
+    link.addEventListener("click", event => {
 
-    if (styleSlides.length > 1) {
+        event.preventDefault();
 
-        showStyle(currentStyle + 1);
-
-    }
-
-}, 5000);
-
-
-/* Pause slideshow when user interacts with it */
-
-const styleSlider = document.querySelector(".style-slider");
-
-if (styleSlider) {
-
-    styleSlider.addEventListener("mouseenter", function () {
-
-        clearInterval(styleTimer);
+        alert(
+            "Your order form link will be connected here before the website goes live."
+        );
 
     });
-
-
-    styleSlider.addEventListener("mouseleave", function () {
-
-        styleTimer = setInterval(function () {
-
-            showStyle(currentStyle + 1);
-
-        }, 5000);
-
-    });
-
-}
-
-
-/* =========================================================
-   KEYBOARD CONTROL
-   ========================================================= */
-
-document.addEventListener("keydown", function (event) {
-
-    if (!styleSlides.length) {
-        return;
-    }
-
-    if (event.key === "ArrowLeft") {
-
-        showStyle(currentStyle - 1);
-
-    }
-
-    if (event.key === "ArrowRight") {
-
-        showStyle(currentStyle + 1);
-
-    }
 
 });
