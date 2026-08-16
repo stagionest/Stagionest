@@ -1,74 +1,218 @@
-
 /* =========================================================
    STAGIONEST
-   Website JavaScript
+   Main JavaScript
    ========================================================= */
 
-document.addEventListener("DOMContentLoaded", function () {
 
-    /* =========================
-       MOBILE MENU
-       ========================= */
+/* =========================================================
+   MOBILE NAVIGATION
+   ========================================================= */
 
-    const menuToggle = document.getElementById("menuToggle");
-    const mainNav = document.getElementById("mainNav");
+const menuToggle = document.getElementById("menuToggle");
+const mainNav = document.getElementById("mainNav");
 
-    if (menuToggle && mainNav) {
+if (menuToggle && mainNav) {
 
-        menuToggle.addEventListener("click", function () {
-            mainNav.classList.toggle("active");
+    menuToggle.addEventListener("click", function () {
+
+        const isOpen = mainNav.classList.toggle("active");
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            isOpen ? "true" : "false"
+        );
+
+        menuToggle.textContent = isOpen ? "✕" : "☰";
+
+    });
+
+
+    /* Close menu after clicking a navigation link */
+
+    const navLinks = mainNav.querySelectorAll("a");
+
+    navLinks.forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            mainNav.classList.remove("active");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            menuToggle.textContent = "☰";
+
         });
 
-        const navLinks = mainNav.querySelectorAll("a");
+    });
 
-        navLinks.forEach(function (link) {
+}
 
-            link.addEventListener("click", function () {
-                mainNav.classList.remove("active");
-            });
 
-        });
+/* =========================================================
+   ONE ROOM — MULTIPLE STYLES SLIDESHOW
+   ========================================================= */
 
+const styleSlides = document.querySelectorAll(".style-slide");
+const styleDots = document.querySelectorAll(".style-dot");
+
+const stylePrev = document.getElementById("stylePrev");
+const styleNext = document.getElementById("styleNext");
+
+let currentStyle = 0;
+
+
+/* Show selected slide */
+
+function showStyle(index) {
+
+    if (!styleSlides.length) {
+        return;
+    }
+
+    if (index < 0) {
+        currentStyle = styleSlides.length - 1;
+    }
+
+    else if (index >= styleSlides.length) {
+        currentStyle = 0;
+    }
+
+    else {
+        currentStyle = index;
     }
 
 
-    /* =========================
-       ORDER BUTTON
-       ========================= */
+    styleSlides.forEach(function (slide, i) {
 
-    const orderButton = document.getElementById("orderButton");
+        slide.classList.toggle(
+            "active",
+            i === currentStyle
+        );
 
-    if (orderButton) {
+    });
 
-        orderButton.addEventListener("click", function (event) {
 
-            const orderLink = "#";
+    styleDots.forEach(function (dot, i) {
 
-            if (orderLink === "#") {
-                event.preventDefault();
+        dot.classList.toggle(
+            "active",
+            i === currentStyle
+        );
 
-                alert(
-                    "Your order form link has not been added yet. Replace the # in index.html with your Google Form URL."
-                );
-            }
+    });
 
-        });
+}
+
+
+/* Previous button */
+
+if (stylePrev) {
+
+    stylePrev.addEventListener("click", function () {
+
+        showStyle(currentStyle - 1);
+
+    });
+
+}
+
+
+/* Next button */
+
+if (styleNext) {
+
+    styleNext.addEventListener("click", function () {
+
+        showStyle(currentStyle + 1);
+
+    });
+
+}
+
+
+/* Dot buttons */
+
+styleDots.forEach(function (dot, index) {
+
+    dot.addEventListener("click", function () {
+
+        showStyle(index);
+
+    });
+
+});
+
+
+/* =========================================================
+   OPTIONAL AUTO SLIDESHOW
+   ========================================================= */
+
+/*
+   The slideshow automatically moves every 5 seconds.
+
+   If you do NOT want automatic movement,
+   delete or comment out the block below.
+*/
+
+let styleTimer = setInterval(function () {
+
+    if (styleSlides.length > 1) {
+
+        showStyle(currentStyle + 1);
 
     }
 
+}, 5000);
 
-    /* =========================
-       CURRENT YEAR
-       ========================= */
 
-    const yearElement = document.querySelector(".footer-bottom p");
+/* Pause slideshow when user interacts with it */
 
-    if (yearElement) {
+const styleSlider = document.querySelector(".style-slider");
 
-        const currentYear = new Date().getFullYear();
+if (styleSlider) {
 
-        yearElement.innerHTML =
-            "© " + currentYear + " StagioNest. All rights reserved.";
+    styleSlider.addEventListener("mouseenter", function () {
+
+        clearInterval(styleTimer);
+
+    });
+
+
+    styleSlider.addEventListener("mouseleave", function () {
+
+        styleTimer = setInterval(function () {
+
+            showStyle(currentStyle + 1);
+
+        }, 5000);
+
+    });
+
+}
+
+
+/* =========================================================
+   KEYBOARD CONTROL
+   ========================================================= */
+
+document.addEventListener("keydown", function (event) {
+
+    if (!styleSlides.length) {
+        return;
+    }
+
+    if (event.key === "ArrowLeft") {
+
+        showStyle(currentStyle - 1);
+
+    }
+
+    if (event.key === "ArrowRight") {
+
+        showStyle(currentStyle + 1);
 
     }
 
