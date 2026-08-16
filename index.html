@@ -6,10 +6,8 @@
 
     <title>StagioNest | Professional Virtual Staging for Real Estate</title>
 
-    <meta
-        name="description"
-        content="Professional AI and digital virtual staging for real estate professionals. Transform empty rooms into realistic, market-ready spaces."
-    >
+    <meta name="description"
+        content="Professional virtual staging for real estate listings. Transform empty rooms into attractive, realistic and market-ready spaces.">
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -23,25 +21,19 @@
 <header class="site-header">
     <div class="container header-inner">
 
-        <a href="#home" class="brand">
-            <img
-                src="images/stagionest-logo.png"
-                alt="StagioNest Professional Virtual Staging"
-            >
+        <a href="#home" class="brand-logo">
+            <img src="images/stagionest-logo.png"
+                 alt="StagioNest Professional Virtual Staging"
+                 class="header-logo">
         </a>
 
-        <button
-            class="menu-toggle"
-            id="menuToggle"
-            aria-label="Open navigation menu"
-            aria-expanded="false"
-        >
+        <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
             ☰
         </button>
 
         <nav class="main-nav" id="mainNav">
+            <a href="#home">Home</a>
             <a href="#portfolio">Portfolio</a>
-            <a href="#styles">Styles</a>
             <a href="#services">Services</a>
             <a href="#process">How It Works</a>
             <a href="#pricing">Pricing</a>
@@ -52,11 +44,11 @@
 </header>
 
 
-<main>
-
 <!-- =========================================================
      HERO
      ========================================================= -->
+
+<main>
 
 <section class="hero" id="home">
 
@@ -69,25 +61,24 @@
             </span>
 
             <h1>
-                Transform Empty Spaces into
-                <span>Beautifully Staged Homes.</span>
+                Transform Empty Spaces Into
+                <span>Beautifully Staged Homes</span>
             </h1>
 
             <p>
-                Professional AI-powered and digital virtual staging
-                designed for U.S. real estate professionals.
-                Create realistic, inviting listing images that help
-                buyers visualize the possibilities.
+                High-quality digital and AI-assisted virtual staging
+                designed to help real estate agents present empty
+                properties in their best light.
             </p>
 
             <div class="hero-buttons">
 
-                <a href="#contact" class="btn btn-primary">
-                    Get Started
+                <a href="#portfolio" class="btn btn-primary">
+                    View Portfolio
                 </a>
 
-                <a href="#portfolio" class="btn btn-secondary">
-                    View Portfolio
+                <a href="#contact" class="btn btn-secondary">
+                    Get a Free Sample
                 </a>
 
             </div>
@@ -95,18 +86,18 @@
             <div class="hero-trust">
 
                 <div>
-                    <strong>Realistic Designs</strong>
-                    <span>Tailored to your property</span>
-                </div>
-
-                <div>
-                    <strong>MLS-Ready Images</strong>
+                    <strong>MLS-Friendly</strong>
                     <span>Professional presentation</span>
                 </div>
 
                 <div>
+                    <strong>Realistic Design</strong>
+                    <span>Natural-looking interiors</span>
+                </div>
+
+                <div>
                     <strong>Fast Delivery</strong>
-                    <span>Efficient turnaround</span>
+                    <span>Ready for your listing</span>
                 </div>
 
             </div>
@@ -114,17 +105,23 @@
         </div>
 
 
+        <!-- HERO IMAGE -->
+
         <div class="hero-image-wrapper">
 
-            <img
-                class="hero-image"
-                src="images/virtual-staging-warm-contemporary-modern-living-room-hero.webp"
-                alt="Virtually staged warm contemporary modern living room"
-            >
+            <div class="hero-image-frame">
+
+                <img
+                    src="images/virtual-staging-warm-contemporary-modern-living-room-hero.webp"
+                    alt="Professionally virtually staged modern living room"
+                    class="hero-image"
+                >
+
+            </div>
 
             <div class="hero-badge">
-                <strong>Empty → Staged</strong>
-                <span>See the transformation</span>
+                <strong>Before → After</strong>
+                <span>See the difference virtual staging makes</span>
             </div>
 
         </div>
@@ -149,318 +146,511 @@
             </span>
 
             <h2>
-                Before &amp; After
+                Before & After
             </h2>
 
             <p>
-                See how empty real estate spaces can be transformed
-                into inviting, professionally staged interiors.
+                Explore our virtual staging transformations across
+                living rooms, bedrooms, kitchens, offices and outdoor spaces.
             </p>
 
         </div>
 
 
-        <div class="portfolio-grid">
-
-
-            <!-- 01 -->
+        <!-- SLIDESHOW -->
 
-            <article class="portfolio-card">
+        <div class="portfolio-slider">
 
-                <div class="portfolio-image">
-                    <img
-                        src="images/empty-warm-contemporary-modern-living-room-before.webp"
-                        alt="Empty warm contemporary modern living room before virtual staging"
-                        loading="lazy"
-                    >
-                    <span class="image-label">BEFORE</span>
-                </div>
-
-                <div class="portfolio-image">
-                    <img
-                        src="images/virtual-staging-warm-contemporary-modern-living-room-after.webp"
-                        alt="Warm contemporary modern living room after virtual staging"
-                        loading="lazy"
-                    >
-                    <span class="image-label after">AFTER</span>
-                </div>
-
-            </article>
-
-
-            <!-- 02 -->
-
-            <article class="portfolio-card">
+            <button
+                class="slider-button slider-prev"
+                id="portfolioPrev"
+                aria-label="Previous portfolio"
+            >
+                ‹
+            </button>
 
-                <div class="portfolio-image">
-                    <img
-                        src="images/empty-modern-organic-living-room-before.webp"
-                        alt="Empty modern organic living room before virtual staging"
-                        loading="lazy"
-                    >
-                    <span class="image-label">BEFORE</span>
-                </div>
-
-                <div class="portfolio-image">
-                    <img
-                        src="images/virtual-staging-modern-organic-living-room-after.webp"
-                        alt="Modern organic living room after virtual staging"
-                        loading="lazy"
-                    >
-                    <span class="image-label after">AFTER</span>
-                </div>
-
-            </article>
-
-
-            <!-- 03 -->
-
-            <article class="portfolio-card">
 
-                <div class="portfolio-image">
-                    <img
-                        src="images/empty-modern-flex-room-real-estate-before.webp"
-                        alt="Empty modern flex room before virtual staging"
-                        loading="lazy"
-                    >
-                    <span class="image-label">BEFORE</span>
-                </div>
-
-                <div class="portfolio-image">
-                    <img
-                        src="images/virtual-staging-modern-flex-room-real-estate-after.webp"
-                        alt="Virtually staged modern flex room"
-                        loading="lazy"
-                    >
-                    <span class="image-label after">AFTER</span>
-                </div>
-
-            </article>
-
-
-            <!-- 04 -->
-
-            <article class="portfolio-card">
-
-                <div class="portfolio-image">
-                    <img
-                        src="images/empty-modern-home-office-us-real-estate-before.webp"
-                        alt="Empty modern home office before virtual staging"
-                        loading="lazy"
-                    >
-                    <span class="image-label">BEFORE</span>
-                </div>
-
-                <div class="portfolio-image">
-                    <img
-                        src="images/virtual-staging-modern-home-office-us-real-estate-after.webp"
-                        alt="Virtually staged modern home office"
-                        loading="lazy"
-                    >
-                    <span class="image-label after">AFTER</span>
-                </div>
-
-            </article>
-
-
-            <!-- 05 -->
+            <div class="portfolio-stage">
 
-            <article class="portfolio-card">
+                <!-- 1 -->
 
-                <div class="portfolio-image">
-                    <img
-                        src="images/empty-modern-open-plan-living-room-kitchen-before.webp"
-                        alt="Empty open plan living room and kitchen before virtual staging"
-                        loading="lazy"
-                    >
-                    <span class="image-label">BEFORE</span>
-                </div>
-
-                <div class="portfolio-image">
-                    <img
-                        src="images/virtual-staging-modern-open-plan-living-room-kitchen-after.webp"
-                        alt="Virtually staged open plan living room and kitchen"
-                        loading="lazy"
-                    >
-                    <span class="image-label after">AFTER</span>
-                </div>
-
-            </article>
-
-
-            <!-- 06 -->
-
-            <article class="portfolio-card">
+                <article class="portfolio-slide active">
 
-                <div class="portfolio-image">
-                    <img
-                        src="images/empty-open-concept-living-dining-room-modern-home-before.webp"
-                        alt="Empty open concept living dining room before virtual staging"
-                        loading="lazy"
-                    >
-                    <span class="image-label">BEFORE</span>
-                </div>
-
-                <div class="portfolio-image">
-                    <img
-                        src="images/virtual-staging-open-concept-living-dining-room-modern-home-after.webp"
-                        alt="Virtually staged open concept living dining room"
-                        loading="lazy"
-                    >
-                    <span class="image-label after">AFTER</span>
-                </div>
-
-            </article>
-
-
-            <!-- 07 -->
-
-            <article class="portfolio-card">
+                    <div class="portfolio-image">
 
-                <div class="portfolio-image">
-                    <img
-                        src="images/empty-covered-patio-real-estate-before.webp"
-                        alt="Empty covered patio before virtual staging"
-                        loading="lazy"
-                    >
-                    <span class="image-label">BEFORE</span>
-                </div>
-
-                <div class="portfolio-image">
-                    <img
-                        src="images/virtual-staging-covered-patio-real-estate-after.webp"
-                        alt="Virtually staged covered patio"
-                        loading="lazy"
-                    >
-                    <span class="image-label after">AFTER</span>
-                </div>
-
-            </article>
-
-
-            <!-- 08 -->
-
-            <article class="portfolio-card">
-
-                <div class="portfolio-image">
-                    <img
-                        src="images/empty-open-concept-kitchen-living-room-before.webp"
-                        alt="Empty open concept kitchen and living room before virtual staging"
-                        loading="lazy"
-                    >
-                    <span class="image-label">BEFORE</span>
-                </div>
-
-                <div class="portfolio-image">
-                    <img
-                        src="images/virtual-staging-open-concept-kitchen-living-room-after.webp"
-                        alt="Virtually staged open concept kitchen and living room"
-                        loading="lazy"
-                    >
-                    <span class="image-label after">AFTER</span>
-                </div>
-
-            </article>
-
-
-            <!-- 09 -->
-
-            <article class="portfolio-card">
-
-                <div class="portfolio-image">
-                    <img
-                        src="images/empty-mid-century-modern-living-room-before.webp"
-                        alt="Empty mid century modern living room before virtual staging"
-                        loading="lazy"
-                    >
-                    <span class="image-label">BEFORE</span>
-                </div>
-
-                <div class="portfolio-image">
-                    <img
-                        src="images/virtual-staging-mid-century-modern-living-room-after.webp"
-                        alt="Virtually staged mid century modern living room"
-                        loading="lazy"
-                    >
-                    <span class="image-label after">AFTER</span>
-                </div>
-
-            </article>
-
-
-            <!-- 10 -->
-
-            <article class="portfolio-card">
-
-                <div class="portfolio-image">
-                    <img
-                        src="images/empty-modern-bedroom-with-balcony-before.webp"
-                        alt="Empty modern bedroom with balcony before virtual staging"
-                        loading="lazy"
-                    >
-                    <span class="image-label">BEFORE</span>
-                </div>
-
-                <div class="portfolio-image">
-                    <img
-                        src="images/virtual-staging-modern-bedroom-with-balcony-after.webp"
-                        alt="Virtually staged modern bedroom with balcony"
-                        loading="lazy"
-                    >
-                    <span class="image-label after">AFTER</span>
-                </div>
-
-            </article>
-
-
-            <!-- 11 -->
-
-            <article class="portfolio-card">
-
-                <div class="portfolio-image">
-                    <img
-                        src="images/empty-modern-organic-bedroom-before.webp"
-                        alt="Empty modern organic bedroom before virtual staging"
-                        loading="lazy"
-                    >
-                    <span class="image-label">BEFORE</span>
-                </div>
-
-                <div class="portfolio-image">
-                    <img
-                        src="images/virtual-staging-modern-organic-bedroom-after.webp"
-                        alt="Virtually staged modern organic bedroom"
-                        loading="lazy"
-                    >
-                    <span class="image-label after">AFTER</span>
-                </div>
-
-            </article>
-
-
-            <!-- 12 -->
-
-            <article class="portfolio-card">
-
-                <div class="portfolio-image">
-                    <img
-                        src="images/empty-warm-contemporary-primary-bedroom-before.webp"
-                        alt="Empty warm contemporary primary bedroom before virtual staging"
-                        loading="lazy"
-                    >
-                    <span class="image-label">BEFORE</span>
-                </div>
-
-                <div class="portfolio-image">
-                    <img
-                        src="images/virtual-staging-warm-contemporary-primary-bedroom-after.webp"
-                        alt="Virtually staged warm contemporary primary bedroom"
-                        loading="lazy"
-                    >
-                    <span class="image-label after">AFTER</span>
-                </div>
-
-            </article>
+                        <img
+                            src="images/empty-warm-contemporary-modern-living-room-before.webp"
+                            alt="Empty warm contemporary modern living room before virtual staging"
+                        >
+
+                        <span class="image-label">
+                            BEFORE
+                        </span>
+
+                    </div>
+
+
+                    <div class="portfolio-image">
+
+                        <img
+                            src="images/virtual-staging-warm-contemporary-modern-living-room-after.webp"
+                            alt="Warm contemporary modern living room after virtual staging"
+                        >
+
+                        <span class="image-label after">
+                            AFTER
+                        </span>
+
+                    </div>
+
+                    <div class="slide-caption">
+                        <strong>Warm Contemporary Living Room</strong>
+                        <span>Living Room</span>
+                    </div>
+
+                </article>
+
+
+                <!-- 2 -->
+
+                <article class="portfolio-slide">
+
+                    <div class="portfolio-image">
+
+                        <img
+                            src="images/empty-modern-organic-living-room-before.webp"
+                            alt="Empty modern organic living room before staging"
+                        >
+
+                        <span class="image-label">
+                            BEFORE
+                        </span>
+
+                    </div>
+
+                    <div class="portfolio-image">
+
+                        <img
+                            src="images/virtual-staging-modern-organic-living-room-after.webp"
+                            alt="Modern organic living room after virtual staging"
+                        >
+
+                        <span class="image-label after">
+                            AFTER
+                        </span>
+
+                    </div>
+
+                    <div class="slide-caption">
+                        <strong>Modern Organic Living Room</strong>
+                        <span>Living Room</span>
+                    </div>
+
+                </article>
+
+
+                <!-- 3 -->
+
+                <article class="portfolio-slide">
+
+                    <div class="portfolio-image">
+
+                        <img
+                            src="images/empty-modern-flex-room-real-estate-before.webp"
+                            alt="Empty flex room before virtual staging"
+                        >
+
+                        <span class="image-label">
+                            BEFORE
+                        </span>
+
+                    </div>
+
+                    <div class="portfolio-image">
+
+                        <img
+                            src="images/virtual-staging-modern-flex-room-real-estate-after.webp"
+                            alt="Virtually staged modern flex room"
+                        >
+
+                        <span class="image-label after">
+                            AFTER
+                        </span>
+
+                    </div>
+
+                    <div class="slide-caption">
+                        <strong>Modern Flex Room</strong>
+                        <span>Flex Room</span>
+                    </div>
+
+                </article>
+
+
+                <!-- 4 -->
+
+                <article class="portfolio-slide">
+
+                    <div class="portfolio-image">
+
+                        <img
+                            src="images/empty-modern-home-office-us-real-estate-before.webp"
+                            alt="Empty modern home office before virtual staging"
+                        >
+
+                        <span class="image-label">
+                            BEFORE
+                        </span>
+
+                    </div>
+
+                    <div class="portfolio-image">
+
+                        <img
+                            src="images/virtual-staging-modern-home-office-us-real-estate-after.webp"
+                            alt="Virtually staged modern home office"
+                        >
+
+                        <span class="image-label after">
+                            AFTER
+                        </span>
+
+                    </div>
+
+                    <div class="slide-caption">
+                        <strong>Modern Home Office</strong>
+                        <span>Home Office</span>
+                    </div>
+
+                </article>
+
+
+                <!-- 5 -->
+
+                <article class="portfolio-slide">
+
+                    <div class="portfolio-image">
+
+                        <img
+                            src="images/empty-modern-open-plan-living-room-kitchen-before.webp"
+                            alt="Empty open plan living room and kitchen"
+                        >
+
+                        <span class="image-label">
+                            BEFORE
+                        </span>
+
+                    </div>
+
+                    <div class="portfolio-image">
+
+                        <img
+                            src="images/virtual-staging-modern-open-plan-living-room-kitchen-after.webp"
+                            alt="Virtually staged open plan living room and kitchen"
+                        >
+
+                        <span class="image-label after">
+                            AFTER
+                        </span>
+
+                    </div>
+
+                    <div class="slide-caption">
+                        <strong>Open Plan Living & Kitchen</strong>
+                        <span>Open Plan</span>
+                    </div>
+
+                </article>
+
+
+                <!-- 6 -->
+
+                <article class="portfolio-slide">
+
+                    <div class="portfolio-image">
+
+                        <img
+                            src="images/empty-open-concept-living-dining-room-modern-home-before.webp"
+                            alt="Empty open concept living dining room"
+                        >
+
+                        <span class="image-label">
+                            BEFORE
+                        </span>
+
+                    </div>
+
+                    <div class="portfolio-image">
+
+                        <img
+                            src="images/virtual-staging-open-concept-living-dining-room-modern-home-after.webp"
+                            alt="Virtually staged open concept living dining room"
+                        >
+
+                        <span class="image-label after">
+                            AFTER
+                        </span>
+
+                    </div>
+
+                    <div class="slide-caption">
+                        <strong>Open Concept Living & Dining</strong>
+                        <span>Living & Dining</span>
+                    </div>
+
+                </article>
+
+
+                <!-- 7 -->
+
+                <article class="portfolio-slide">
+
+                    <div class="portfolio-image">
+
+                        <img
+                            src="images/empty-covered-patio-real-estate-before.webp"
+                            alt="Empty covered patio before virtual staging"
+                        >
+
+                        <span class="image-label">
+                            BEFORE
+                        </span>
+
+                    </div>
+
+                    <div class="portfolio-image">
+
+                        <img
+                            src="images/virtual-staging-covered-patio-real-estate-after.webp"
+                            alt="Virtually staged covered patio"
+                        >
+
+                        <span class="image-label after">
+                            AFTER
+                        </span>
+
+                    </div>
+
+                    <div class="slide-caption">
+                        <strong>Covered Outdoor Patio</strong>
+                        <span>Outdoor Living</span>
+                    </div>
+
+                </article>
+
+
+                <!-- 8 -->
+
+                <article class="portfolio-slide">
+
+                    <div class="portfolio-image">
+
+                        <img
+                            src="images/empty-open-concept-kitchen-living-room-before.webp"
+                            alt="Empty open concept kitchen and living room"
+                        >
+
+                        <span class="image-label">
+                            BEFORE
+                        </span>
+
+                    </div>
+
+                    <div class="portfolio-image">
+
+                        <img
+                            src="images/virtual-staging-open-concept-kitchen-living-room-after.webp"
+                            alt="Virtually staged open concept kitchen and living room"
+                        >
+
+                        <span class="image-label after">
+                            AFTER
+                        </span>
+
+                    </div>
+
+                    <div class="slide-caption">
+                        <strong>Open Concept Kitchen & Living</strong>
+                        <span>Kitchen & Living</span>
+                    </div>
+
+                </article>
+
+
+                <!-- 9 -->
+
+                <article class="portfolio-slide">
+
+                    <div class="portfolio-image">
+
+                        <img
+                            src="images/empty-mid-century-modern-living-room-before.webp"
+                            alt="Empty mid century modern living room"
+                        >
+
+                        <span class="image-label">
+                            BEFORE
+                        </span>
+
+                    </div>
+
+                    <div class="portfolio-image">
+
+                        <img
+                            src="images/virtual-staging-mid-century-modern-living-room-after.webp"
+                            alt="Virtually staged mid century modern living room"
+                        >
+
+                        <span class="image-label after">
+                            AFTER
+                        </span>
+
+                    </div>
+
+                    <div class="slide-caption">
+                        <strong>Mid-Century Modern Living Room</strong>
+                        <span>Living Room</span>
+                    </div>
+
+                </article>
+
+
+                <!-- 10 -->
+
+                <article class="portfolio-slide">
+
+                    <div class="portfolio-image">
+
+                        <img
+                            src="images/empty-modern-bedroom-with-balcony-before.webp"
+                            alt="Empty modern bedroom with balcony"
+                        >
+
+                        <span class="image-label">
+                            BEFORE
+                        </span>
+
+                    </div>
+
+                    <div class="portfolio-image">
+
+                        <img
+                            src="images/virtual-staging-modern-bedroom-with-balcony-after.webp"
+                            alt="Virtually staged modern bedroom with balcony"
+                        >
+
+                        <span class="image-label after">
+                            AFTER
+                        </span>
+
+                    </div>
+
+                    <div class="slide-caption">
+                        <strong>Modern Bedroom With Balcony</strong>
+                        <span>Bedroom</span>
+                    </div>
+
+                </article>
+
+
+                <!-- 11 -->
+
+                <article class="portfolio-slide">
+
+                    <div class="portfolio-image">
+
+                        <img
+                            src="images/empty-modern-organic-bedroom-before.webp"
+                            alt="Empty modern organic bedroom"
+                        >
+
+                        <span class="image-label">
+                            BEFORE
+                        </span>
+
+                    </div>
+
+                    <div class="portfolio-image">
+
+                        <img
+                            src="images/virtual-staging-modern-organic-bedroom-after.webp"
+                            alt="Virtually staged modern organic bedroom"
+                        >
+
+                        <span class="image-label after">
+                            AFTER
+                        </span>
+
+                    </div>
+
+                    <div class="slide-caption">
+                        <strong>Modern Organic Bedroom</strong>
+                        <span>Bedroom</span>
+                    </div>
+
+                </article>
+
+
+                <!-- 12 -->
+
+                <article class="portfolio-slide">
+
+                    <div class="portfolio-image">
+
+                        <img
+                            src="images/empty-warm-contemporary-primary-bedroom-before.webp"
+                            alt="Empty warm contemporary primary bedroom"
+                        >
+
+                        <span class="image-label">
+                            BEFORE
+                        </span>
+
+                    </div>
+
+                    <div class="portfolio-image">
+
+                        <img
+                            src="images/virtual-staging-warm-contemporary-primary-bedroom-after.webp"
+                            alt="Virtually staged warm contemporary primary bedroom"
+                        >
+
+                        <span class="image-label after">
+                            AFTER
+                        </span>
+
+                    </div>
+
+                    <div class="slide-caption">
+                        <strong>Warm Contemporary Primary Bedroom</strong>
+                        <span>Primary Bedroom</span>
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <button
+                class="slider-button slider-next"
+                id="portfolioNext"
+                aria-label="Next portfolio"
+            >
+                ›
+            </button>
+
+        </div>
+
+
+        <div class="slider-controls">
+
+            <button id="portfolioPause" class="pause-button">
+                Pause
+            </button>
+
+            <span id="slideCounter">
+                1 / 12
+            </span>
 
         </div>
 
@@ -470,27 +660,26 @@
 
 
 <!-- =========================================================
-     ONE ROOM MULTIPLE STYLES
+     ONE ROOM — DIFFERENT STYLES
      ========================================================= -->
 
-<section class="section styles-section" id="styles">
+<section class="section style-section">
 
     <div class="container">
 
         <div class="section-heading">
 
             <span class="eyebrow">
-                DESIGN FLEXIBILITY
+                DESIGN OPTIONS
             </span>
 
             <h2>
-                One Room. Multiple Styles.
+                One Room. Different Styles.
             </h2>
 
             <p>
-                The same space can be transformed into different
-                design styles to suit the property, target buyer,
-                and listing strategy.
+                The same empty space can be transformed into different
+                interior styles depending on the property's audience.
             </p>
 
         </div>
@@ -498,155 +687,71 @@
 
         <div class="style-showcase">
 
-            <div class="style-slider">
+            <div class="style-main-image">
 
-                <!-- Slide 1 -->
+                <img
+                    id="styleMainImage"
+                    src="images/virtual-staging-warm-contemporary-modern-living-room-after.webp"
+                    alt="Warm contemporary virtual staging style"
+                >
 
-                <div class="style-slide active">
-
-                    <img
-                        src="images/empty-mid-century-modern-living-room.jpg"
-                        alt="Original empty living room"
-                    >
-
-                    <div class="style-caption">
-                        <span>ORIGINAL</span>
-                        <h3>Empty Room</h3>
-                    </div>
-
+                <div class="style-main-label" id="styleLabel">
+                    Warm Contemporary
                 </div>
 
+            </div>
 
-                <!-- Slide 2 -->
 
-                <div class="style-slide">
+            <div class="style-options">
+
+                <button
+                    class="style-option active"
+                    data-image="images/virtual-staging-warm-contemporary-modern-living-room-after.webp"
+                    data-title="Warm Contemporary"
+                >
+
+                    <img
+                        src="images/virtual-staging-warm-contemporary-modern-living-room-after.webp"
+                        alt="Warm contemporary style"
+                    >
+
+                    <span>Warm Contemporary</span>
+
+                </button>
+
+
+                <button
+                    class="style-option"
+                    data-image="images/virtual-staging-modern-organic-living-room-after.webp"
+                    data-title="Modern Organic"
+                >
+
+                    <img
+                        src="images/virtual-staging-modern-organic-living-room-after.webp"
+                        alt="Modern organic style"
+                    >
+
+                    <span>Modern Organic</span>
+
+                </button>
+
+
+                <button
+                    class="style-option"
+                    data-image="images/virtual-staging-mid-century-modern-living-room-after.webp"
+                    data-title="Mid-Century Modern"
+                >
 
                     <img
                         src="images/virtual-staging-mid-century-modern-living-room-after.webp"
-                        alt="Mid-century modern living room"
+                        alt="Mid-century modern style"
                     >
 
-                    <div class="style-caption">
-                        <span>STYLE 01</span>
-                        <h3>Mid-Century Modern</h3>
-                    </div>
+                    <span>Mid-Century Modern</span>
 
-                </div>
-
-
-                <!-- Slide 3 -->
-
-                <div class="style-slide">
-
-                    <img
-                        src="images/organic_modern_living_room.webp"
-                        alt="Organic modern living room"
-                    >
-
-                    <div class="style-caption">
-                        <span>STYLE 02</span>
-                        <h3>Organic Modern</h3>
-                    </div>
-
-                </div>
-
-
-                <!-- Slide 4 -->
-
-                <div class="style-slide">
-
-                    <img
-                        src="images/scandinavian_living_room.webp"
-                        alt="Scandinavian living room"
-                    >
-
-                    <div class="style-caption">
-                        <span>STYLE 03</span>
-                        <h3>Scandinavian</h3>
-                    </div>
-
-                </div>
-
-
-                <!-- Slide 5 -->
-
-                <div class="style-slide">
-
-                    <img
-                        src="images/minimalist_city_living_room.webp"
-                        alt="Minimalist city living room"
-                    >
-
-                    <div class="style-caption">
-                        <span>STYLE 04</span>
-                        <h3>Minimalist Contemporary</h3>
-                    </div>
-
-                </div>
-
-
-                <button
-                    class="style-arrow style-prev"
-                    id="stylePrev"
-                    aria-label="Previous style"
-                >
-                    ‹
-                </button>
-
-                <button
-                    class="style-arrow style-next"
-                    id="styleNext"
-                    aria-label="Next style"
-                >
-                    ›
                 </button>
 
             </div>
-
-
-            <div class="style-dots" id="styleDots">
-
-                <button
-                    class="style-dot active"
-                    aria-label="Show empty room"
-                ></button>
-
-                <button
-                    class="style-dot"
-                    aria-label="Show mid-century modern"
-                ></button>
-
-                <button
-                    class="style-dot"
-                    aria-label="Show organic modern"
-                ></button>
-
-                <button
-                    class="style-dot"
-                    aria-label="Show Scandinavian"
-                ></button>
-
-                <button
-                    class="style-dot"
-                    aria-label="Show minimalist contemporary"
-                ></button>
-
-            </div>
-
-        </div>
-
-
-        <div class="styles-message">
-
-            <strong>
-                Different buyers. Different styles. One beautifully
-                staged space.
-            </strong>
-
-            <p>
-                Choose a design direction that complements your
-                property and helps buyers imagine themselves living there.
-            </p>
 
         </div>
 
@@ -666,7 +771,7 @@
         <div class="section-heading">
 
             <span class="eyebrow">
-                WHAT WE DO
+                OUR SERVICES
             </span>
 
             <h2>
@@ -674,7 +779,8 @@
             </h2>
 
             <p>
-                Professional digital staging for residential real estate listings.
+                Professional digital staging for the spaces buyers
+                see in residential property listings.
             </p>
 
         </div>
@@ -682,41 +788,37 @@
 
         <div class="services-grid">
 
-            <article class="service-card">
+            <div class="service-card">
                 <div class="service-icon">01</div>
-                <h3>Virtual Staging</h3>
+                <h3>Living Rooms</h3>
                 <p>
-                    Transform empty rooms into realistic,
-                    beautifully furnished spaces.
+                    Create attractive, balanced and welcoming living spaces.
                 </p>
-            </article>
+            </div>
 
-            <article class="service-card">
+            <div class="service-card">
                 <div class="service-icon">02</div>
-                <h3>Furniture Removal</h3>
+                <h3>Bedrooms</h3>
                 <p>
-                    Digitally remove unwanted furniture and
-                    prepare the room for a new design.
+                    Turn empty bedrooms into comfortable and marketable spaces.
                 </p>
-            </article>
+            </div>
 
-            <article class="service-card">
+            <div class="service-card">
                 <div class="service-icon">03</div>
-                <h3>Object Removal</h3>
+                <h3>Kitchens</h3>
                 <p>
-                    Clean distracting objects from listing
-                    photos while preserving the property.
+                    Present open kitchens and connected spaces with realistic furniture.
                 </p>
-            </article>
+            </div>
 
-            <article class="service-card">
+            <div class="service-card">
                 <div class="service-icon">04</div>
-                <h3>Style Matching</h3>
+                <h3>Outdoor Spaces</h3>
                 <p>
-                    Select a design direction that suits the
-                    property and target market.
+                    Show buyers the potential of patios and outdoor living areas.
                 </p>
-            </article>
+            </div>
 
         </div>
 
@@ -740,13 +842,13 @@
             </span>
 
             <h2>
-                Designed to make your listings stand out.
+                Help Buyers See the Possibilities.
             </h2>
 
             <p>
-                Empty rooms can be difficult for buyers to visualize.
-                Professional virtual staging gives them a clear idea
-                of how a space can look and feel.
+                Empty rooms can make a property feel smaller or less inviting.
+                Professional virtual staging helps buyers visualize how the
+                space can actually be used.
             </p>
 
         </div>
@@ -755,62 +857,50 @@
         <div class="benefits">
 
             <div class="benefit">
-
                 <span>✓</span>
 
                 <div>
-                    <h3>Realistic Presentation</h3>
+                    <h3>Realistic Furniture Placement</h3>
                     <p>
-                        Furniture, lighting, shadows and proportions
-                        are designed to look natural.
+                        Furniture is positioned to respect the room's architecture and perspective.
                     </p>
                 </div>
-
             </div>
 
 
             <div class="benefit">
-
                 <span>✓</span>
 
                 <div>
-                    <h3>Property-Focused Design</h3>
+                    <h3>Professional Interior Styling</h3>
                     <p>
-                        The original architecture and perspective
-                        remain the foundation of the design.
+                        Clean, modern styles designed for residential real estate marketing.
                     </p>
                 </div>
-
             </div>
 
 
             <div class="benefit">
+                <span>✓</span>
 
+                <div>
+                    <h3>Listing-Ready Images</h3>
+                    <p>
+                        High-quality staged images suitable for online property marketing.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="benefit">
                 <span>✓</span>
 
                 <div>
                     <h3>Multiple Design Styles</h3>
                     <p>
-                        Contemporary, organic, Scandinavian,
-                        mid-century and other styles can be explored.
+                        Choose a style that fits the property and its target buyers.
                     </p>
                 </div>
-
-            </div>
-
-
-            <div class="benefit">
-
-                <span>✓</span>
-
-                <div>
-                    <h3>Real Estate Ready</h3>
-                    <p>
-                        Images are prepared for professional
-                        residential property marketing.
-                    </p>
-                </div>
-
             </div>
 
         </div>
@@ -847,37 +937,37 @@
 
         <div class="process-grid">
 
-            <article class="process-step">
+            <div class="process-step">
                 <div class="step-number">01</div>
                 <h3>Send Photos</h3>
                 <p>
-                    Share your property photos through the order form.
+                    Send your property photos and staging requirements.
                 </p>
-            </article>
+            </div>
 
-            <article class="process-step">
+            <div class="process-step">
                 <div class="step-number">02</div>
-                <h3>Choose Your Style</h3>
+                <h3>Choose a Style</h3>
                 <p>
-                    Tell us the preferred furniture and interior style.
+                    Select a preferred interior design style.
                 </p>
-            </article>
+            </div>
 
-            <article class="process-step">
+            <div class="process-step">
                 <div class="step-number">03</div>
                 <h3>We Stage</h3>
                 <p>
                     Your empty space is digitally transformed.
                 </p>
-            </article>
+            </div>
 
-            <article class="process-step">
+            <div class="process-step">
                 <div class="step-number">04</div>
                 <h3>Receive Images</h3>
                 <p>
-                    Get your professionally staged listing images.
+                    Get your completed virtual staging images.
                 </p>
-            </article>
+            </div>
 
         </div>
 
@@ -897,15 +987,15 @@
         <div class="section-heading">
 
             <span class="eyebrow">
-                SIMPLE PACKAGES
+                SIMPLE PRICING
             </span>
 
             <h2>
-                Virtual Staging Packages
+                Choose Your Package
             </h2>
 
             <p>
-                Flexible packages for individual rooms and complete listings.
+                Flexible packages for individual listings and larger projects.
             </p>
 
         </div>
@@ -913,86 +1003,86 @@
 
         <div class="pricing-grid">
 
-            <article class="price-card">
+            <div class="price-card">
 
                 <h3>Starter</h3>
 
                 <div class="price">
-                    <span>$</span>XX
+                    <span>$</span>29
                 </div>
 
                 <p class="price-description">
-                    Perfect for a small listing or a few key rooms.
+                    For smaller staging projects.
                 </p>
 
                 <ul>
                     <li>3 staged images</li>
                     <li>Professional styling</li>
                     <li>High-resolution delivery</li>
-                    <li>1 revision</li>
+                    <li>Listing-ready images</li>
                 </ul>
 
                 <a href="#contact" class="btn btn-secondary">
-                    Choose Starter
+                    Get Started
                 </a>
 
-            </article>
+            </div>
 
 
-            <article class="price-card featured">
+            <div class="price-card featured">
 
-                <span class="popular">
+                <div class="popular">
                     MOST POPULAR
-                </span>
+                </div>
 
                 <h3>Professional</h3>
 
                 <div class="price">
-                    <span>$</span>XX
+                    <span>$</span>45
                 </div>
 
                 <p class="price-description">
-                    A balanced package for active real estate listings.
+                    Ideal for a typical property listing.
                 </p>
 
                 <ul>
                     <li>5 staged images</li>
                     <li>Professional styling</li>
                     <li>High-resolution delivery</li>
-                    <li>1 revision</li>
+                    <li>Listing-ready images</li>
                 </ul>
 
                 <a href="#contact" class="btn btn-primary">
-                    Choose Professional
+                    Get Started
                 </a>
 
-            </article>
+            </div>
 
 
-            <article class="price-card">
+            <div class="price-card">
 
-                <h3>Listing Pro</h3>
+                <h3>Property</h3>
 
                 <div class="price">
-                    <span>$</span>XX
+                    <span>$</span>79
                 </div>
 
                 <p class="price-description">
-                    Designed for larger properties and complete listings.
+                    Best for complete property presentation.
                 </p>
 
                 <ul>
                     <li>10 staged images</li>
                     <li>Professional styling</li>
                     <li>High-resolution delivery</li>
-                    <li>1 revision</li>
+                    <li>Listing-ready images</li>
                 </ul>
 
                 <a href="#contact" class="btn btn-secondary">
-                    Choose Listing Pro
+                    Get Started
                 </a>
 
-            </article>
+            </div>
 
         </div>
 
@@ -1007,24 +1097,28 @@
 
 <section class="cta-section" id="contact">
 
-    <div class="container cta-content">
+    <div class="container">
 
-        <span class="eyebrow">
-            READY TO TRANSFORM YOUR LISTING?
-        </span>
+        <div class="cta-content">
 
-        <h2>
-            Turn Empty Rooms Into Buyer-Ready Spaces.
-        </h2>
+            <span class="eyebrow">
+                READY TO STAGE?
+            </span>
 
-        <p>
-            Send your property photos and let StagioNest create
-            a professionally staged visual experience.
-        </p>
+            <h2>
+                Make Your Empty Listing Stand Out.
+            </h2>
 
-        <a href="#" class="btn btn-light">
-            Request Your Free Sample
-        </a>
+            <p>
+                Send us your property photos and let us transform
+                empty spaces into attractive, marketable interiors.
+            </p>
+
+            <a href="#" class="btn btn-light">
+                Request a Free Sample
+            </a>
+
+        </div>
 
     </div>
 
@@ -1043,17 +1137,15 @@
 
         <div>
 
-            <a href="#home" class="footer-logo">
-                <img
-                    src="images/stagionest-logo.png"
-                    alt="StagioNest Professional Virtual Staging"
-                >
-            </a>
+            <img
+                src="images/stagionest-logo.png"
+                alt="StagioNest"
+                class="footer-logo"
+            >
 
             <p>
-                Professional virtual staging for real estate
-                professionals. Helping buyers visualize the
-                possibilities of every space.
+                Professional virtual staging for real estate agents,
+                Realtors and property marketing.
             </p>
 
         </div>
@@ -1061,23 +1153,24 @@
 
         <div class="footer-links">
 
-            <h4>Explore</h4>
+            <h4>Navigate</h4>
 
+            <a href="#home">Home</a>
             <a href="#portfolio">Portfolio</a>
-            <a href="#styles">Multiple Styles</a>
             <a href="#services">Services</a>
-            <a href="#process">How It Works</a>
+            <a href="#pricing">Pricing</a>
 
         </div>
 
 
         <div class="footer-links">
 
-            <h4>Get Started</h4>
+            <h4>Services</h4>
 
-            <a href="#pricing">Pricing</a>
-            <a href="#contact">Free Sample</a>
-            <a href="#contact">Contact</a>
+            <a href="#portfolio">Virtual Staging</a>
+            <a href="#portfolio">Before & After</a>
+            <a href="#process">How It Works</a>
+            <a href="#contact">Get Started</a>
 
         </div>
 
