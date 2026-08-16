@@ -21,8 +21,8 @@ body {
 }
 
 img {
-    width: 100%;
     display: block;
+    max-width: 100%;
 }
 
 a {
@@ -48,47 +48,35 @@ button {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.96);
+    background: rgba(255, 255, 255, 0.97);
     border-bottom: 1px solid #e9eeeb;
     backdrop-filter: blur(10px);
 }
 
 .header-inner {
-    min-height: 76px;
+    min-height: 82px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.logo {
-    display: inline-flex;
+
+/* Real logo */
+
+.brand {
+    display: flex;
     align-items: center;
 }
 
-.logo img {
-    width: 150px;
+.brand img {
+    width: 165px;
     height: auto;
-    display: block;
-}
-
-.logo-mark {
-    width: 38px;
-    height: 38px;
-    display: grid;
-    place-items: center;
-    border-radius: 10px;
-    background: #183b32;
-    color: #ffffff;
-    font-weight: 800;
-}
-
-.logo-text span {
-    color: #8b7355;
+    object-fit: contain;
 }
 
 .main-nav {
     display: flex;
     align-items: center;
-    gap: 28px;
+    gap: 26px;
 }
 
 .main-nav a {
@@ -118,6 +106,7 @@ button {
     display: none;
     border: 0;
     background: transparent;
+    color: #183b32;
     font-size: 28px;
     cursor: pointer;
 }
@@ -128,9 +117,8 @@ button {
    ========================================================= */
 
 .hero {
-    padding: 105px 0 90px;
+    padding: 95px 0 105px;
     background: #f5f8f6;
-
 }
 
 .hero-grid {
@@ -236,14 +224,23 @@ button {
     color: #7a8580;
 }
 
+
+/* HERO IMAGE FIX
+   Complete image is shown.
+   No forced crop. */
+
 .hero-image-wrapper {
     position: relative;
+    width: 100%;
 }
 
 .hero-image {
-    height: 560px;
-    object-fit: cover;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: contain;
     border-radius: 18px;
+    background: #ffffff;
     box-shadow: 0 25px 60px rgba(22, 46, 39, 0.15);
 }
 
@@ -277,12 +274,12 @@ button {
    ========================================================= */
 
 .section {
-    padding: 95px 0;
+    padding: 100px 0;
 }
 
 .section-heading {
     max-width: 680px;
-    margin: 0 auto 50px;
+    margin: 0 auto 52px;
     text-align: center;
 }
 
@@ -310,7 +307,7 @@ button {
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 25px;
+    gap: 28px;
 }
 
 .portfolio-card {
@@ -321,19 +318,25 @@ button {
     background: #f1f3f2;
     box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
 }
+
+
+/* Important:
+   Complete image remains visible */
+
 .portfolio-image {
     position: relative;
-    background: #f1f3f2;
-    overflow: hidden;
+    min-height: 300px;
+    background: #eef1ef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .portfolio-image img {
     width: 100%;
-    height: auto;
-    display: block;
+    height: 100%;
     object-fit: contain;
 }
-
 
 .image-label {
     position: absolute;
@@ -341,7 +344,7 @@ button {
     left: 12px;
     padding: 5px 9px;
     border-radius: 4px;
-    background: rgba(0, 0, 0, 0.65);
+    background: rgba(0, 0, 0, 0.68);
     color: #ffffff;
     font-size: 10px;
     font-weight: 800;
@@ -354,11 +357,165 @@ button {
 
 
 /* =========================================================
+   ONE ROOM MULTIPLE STYLES
+   ========================================================= */
+
+.styles-section {
+    background: #f5f8f6;
+}
+
+
+/* Main slideshow */
+
+.style-showcase {
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+.style-slider {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 20px 55px rgba(22, 46, 39, 0.12);
+}
+
+.style-slide {
+    display: none;
+    position: relative;
+}
+
+.style-slide.active {
+    display: block;
+    animation: styleFade 0.45s ease;
+}
+
+@keyframes styleFade {
+    from {
+        opacity: 0.3;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.style-slide img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: contain;
+    background: #ffffff;
+}
+
+.style-caption {
+    position: absolute;
+    left: 25px;
+    bottom: 25px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    background: rgba(16, 43, 36, 0.92);
+    color: #ffffff;
+}
+
+.style-caption span {
+    display: block;
+    margin-bottom: 4px;
+    color: #cbb795;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.style-caption h3 {
+    font-size: 20px;
+}
+
+
+/* Arrows */
+
+.style-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.94);
+    color: #183b32;
+    font-size: 34px;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.14);
+    z-index: 5;
+    transition: 0.2s ease;
+}
+
+.style-arrow:hover {
+    transform: translateY(-50%) scale(1.05);
+}
+
+.style-prev {
+    left: 18px;
+}
+
+.style-next {
+    right: 18px;
+}
+
+
+/* Dots */
+
+.style-dots {
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+    margin-top: 22px;
+}
+
+.style-dot {
+    width: 9px;
+    height: 9px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #c8d2cd;
+    cursor: pointer;
+}
+
+.style-dot.active {
+    width: 25px;
+    border-radius: 10px;
+    background: #183b32;
+}
+
+
+/* Message underneath */
+
+.styles-message {
+    max-width: 720px;
+    margin: 45px auto 0;
+    text-align: center;
+}
+
+.styles-message strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 20px;
+}
+
+.styles-message p {
+    color: #68736f;
+}
+
+
+/* =========================================================
    SERVICES
    ========================================================= */
 
 .services-section {
-    background: #f5f8f6;
+    background: #ffffff;
 }
 
 .services-grid {
@@ -372,6 +529,7 @@ button {
     background: #ffffff;
     border: 1px solid #e4eae7;
     border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.035);
 }
 
 .service-icon {
@@ -401,6 +559,10 @@ button {
 /* =========================================================
    WHY SECTION
    ========================================================= */
+
+.why-section {
+    background: #f5f8f6;
+}
 
 .why-grid {
     display: grid;
@@ -459,7 +621,7 @@ button {
    ========================================================= */
 
 .process-section {
-    background: #f5f8f6;
+    background: #ffffff;
 }
 
 .process-grid {
@@ -469,7 +631,6 @@ button {
 }
 
 .process-step {
-    position: relative;
     padding: 30px 24px;
     background: #ffffff;
     border-radius: 12px;
@@ -503,6 +664,10 @@ button {
 /* =========================================================
    PRICING
    ========================================================= */
+
+.pricing-section {
+    background: #f5f8f6;
+}
 
 .pricing-grid {
     display: grid;
@@ -585,7 +750,7 @@ button {
    ========================================================= */
 
 .cta-section {
-    padding: 90px 0;
+    padding: 95px 0;
     background: #183b32;
     color: #ffffff;
 }
@@ -626,11 +791,23 @@ button {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
     gap: 60px;
-    padding: 60px 0;
+    padding: 65px 0;
 }
 
+
+/* Real logo on dark footer */
+
 .footer-logo {
-    margin-bottom: 18px;
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 12px;
+    background: #ffffff;
+    border-radius: 8px;
+}
+
+.footer-logo img {
+    width: 175px;
+    height: auto;
 }
 
 .footer-grid p {
@@ -671,7 +848,7 @@ button {
 
 
 /* =========================================================
-   MOBILE
+   TABLET
    ========================================================= */
 
 @media (max-width: 900px) {
@@ -685,7 +862,7 @@ button {
     }
 
     .hero-image-wrapper {
-        max-width: 700px;
+        max-width: 760px;
         width: 100%;
         margin: 0 auto;
     }
@@ -713,10 +890,18 @@ button {
 }
 
 
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
 @media (max-width: 700px) {
 
     .header-inner {
-        min-height: 68px;
+        min-height: 70px;
+    }
+
+    .brand img {
+        width: 145px;
     }
 
     .menu-toggle {
@@ -725,14 +910,18 @@ button {
 
     .main-nav {
         position: absolute;
-        top: 68px;
+        top: 70px;
         left: 0;
         right: 0;
+
         display: none;
+
         flex-direction: column;
         align-items: stretch;
         gap: 0;
+
         padding: 12px 4%;
+
         background: #ffffff;
         border-bottom: 1px solid #e9eeeb;
     }
@@ -750,8 +939,9 @@ button {
         margin: 8px 0;
     }
 
+
     .hero {
-        padding: 55px 0 65px;
+        padding: 60px 0 70px;
     }
 
     .hero h1 {
@@ -764,7 +954,7 @@ button {
     }
 
     .hero-image {
-        height: 400px;
+        aspect-ratio: 3 / 2;
     }
 
     .hero-badge {
@@ -772,18 +962,56 @@ button {
         bottom: 15px;
     }
 
+
     .section {
-        padding: 70px 0;
+        padding: 75px 0;
     }
+
 
     .portfolio-grid {
         grid-template-columns: 1fr;
     }
 
+
+    .portfolio-card {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .portfolio-image {
+        min-height: 220px;
+    }
+
+
     .services-grid,
     .process-grid {
         grid-template-columns: 1fr;
     }
+
+
+    .style-caption {
+        left: 15px;
+        bottom: 15px;
+        padding: 11px 14px;
+    }
+
+    .style-caption h3 {
+        font-size: 16px;
+    }
+
+    .style-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 28px;
+    }
+
+    .style-prev {
+        left: 10px;
+    }
+
+    .style-next {
+        right: 10px;
+    }
+
 
     .footer-grid {
         grid-template-columns: 1fr;
@@ -792,6 +1020,10 @@ button {
 
 }
 
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
 
 @media (max-width: 480px) {
 
@@ -812,11 +1044,31 @@ button {
     }
 
     .portfolio-card {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 
     .portfolio-image {
-        min-height: 240px;
+        min-height: 180px;
+    }
+
+    .image-label {
+        top: 8px;
+        left: 8px;
+        padding: 4px 6px;
+        font-size: 8px;
+    }
+
+    .style-slide img {
+        aspect-ratio: 3 / 2;
+    }
+
+    .style-caption {
+        left: 10px;
+        bottom: 10px;
+    }
+
+    .style-caption h3 {
+        font-size: 14px;
     }
 
 }
