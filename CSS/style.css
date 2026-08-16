@@ -54,29 +54,26 @@ button {
 }
 
 .header-inner {
-    min-height: 82px;
+    min-height: 76px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-/* Real logo */
-
-.brand {
+.brand-logo {
     display: flex;
     align-items: center;
 }
 
-.brand img {
-    width: 165px;
+.header-logo {
+    width: 155px;
     height: auto;
-    object-fit: contain;
 }
 
 .main-nav {
     display: flex;
     align-items: center;
-    gap: 26px;
+    gap: 27px;
 }
 
 .main-nav a {
@@ -106,7 +103,6 @@ button {
     display: none;
     border: 0;
     background: transparent;
-    color: #183b32;
     font-size: 28px;
     cursor: pointer;
 }
@@ -117,7 +113,7 @@ button {
    ========================================================= */
 
 .hero {
-    padding: 95px 0 105px;
+    padding: 85px 0 100px;
     background: #f5f8f6;
 }
 
@@ -225,23 +221,29 @@ button {
 }
 
 
-/* HERO IMAGE FIX
-   Complete image is shown.
-   No forced crop. */
+/* =========================================================
+   HERO IMAGE
+   IMPORTANT: CONTAIN = SHOW COMPLETE IMAGE
+   ========================================================= */
 
 .hero-image-wrapper {
     position: relative;
+}
+
+.hero-image-frame {
     width: 100%;
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 10px;
+    box-shadow: 0 25px 60px rgba(22, 46, 39, 0.15);
 }
 
 .hero-image {
     width: 100%;
     height: auto;
-    aspect-ratio: 3 / 2;
+    max-height: 650px;
     object-fit: contain;
-    border-radius: 18px;
-    background: #ffffff;
-    box-shadow: 0 25px 60px rgba(22, 46, 39, 0.15);
+    border-radius: 12px;
 }
 
 .hero-badge {
@@ -279,7 +281,7 @@ button {
 
 .section-heading {
     max-width: 680px;
-    margin: 0 auto 52px;
+    margin: 0 auto 50px;
     text-align: center;
 }
 
@@ -304,29 +306,38 @@ button {
     background: #ffffff;
 }
 
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 28px;
+.portfolio-slider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
-.portfolio-card {
-    display: grid;
+.portfolio-stage {
+    width: 100%;
+    min-width: 0;
+}
+
+.portfolio-slide {
+    display: none;
+    position: relative;
     grid-template-columns: 1fr 1fr;
-    overflow: hidden;
-    border-radius: 14px;
-    background: #f1f3f2;
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
+    gap: 18px;
+    background: #f4f6f5;
+    padding: 18px;
+    border-radius: 18px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.07);
 }
 
-
-/* Important:
-   Complete image remains visible */
+.portfolio-slide.active {
+    display: grid;
+}
 
 .portfolio-image {
     position: relative;
-    min-height: 300px;
-    background: #eef1ef;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -334,17 +345,18 @@ button {
 
 .portfolio-image img {
     width: 100%;
-    height: 100%;
+    height: auto;
+    max-height: 560px;
     object-fit: contain;
 }
 
 .image-label {
     position: absolute;
-    top: 12px;
-    left: 12px;
-    padding: 5px 9px;
-    border-radius: 4px;
-    background: rgba(0, 0, 0, 0.68);
+    top: 14px;
+    left: 14px;
+    padding: 6px 10px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.70);
     color: #ffffff;
     font-size: 10px;
     font-weight: 800;
@@ -355,158 +367,151 @@ button {
     background: #183b32;
 }
 
-
-/* =========================================================
-   ONE ROOM MULTIPLE STYLES
-   ========================================================= */
-
-.styles-section {
-    background: #f5f8f6;
+.slide-caption {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 7px 0 2px;
 }
 
-
-/* Main slideshow */
-
-.style-showcase {
-    max-width: 950px;
-    margin: 0 auto;
-}
-
-.style-slider {
-    position: relative;
-    overflow: hidden;
-    border-radius: 18px;
-    background: #ffffff;
-    box-shadow: 0 20px 55px rgba(22, 46, 39, 0.12);
-}
-
-.style-slide {
-    display: none;
-    position: relative;
-}
-
-.style-slide.active {
+.slide-caption strong {
     display: block;
-    animation: styleFade 0.45s ease;
+    font-size: 18px;
 }
 
-@keyframes styleFade {
-    from {
-        opacity: 0.3;
-    }
-
-    to {
-        opacity: 1;
-    }
+.slide-caption span {
+    color: #77827d;
+    font-size: 13px;
 }
 
-.style-slide img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 3 / 2;
-    object-fit: contain;
-    background: #ffffff;
-}
-
-.style-caption {
-    position: absolute;
-    left: 25px;
-    bottom: 25px;
-    padding: 15px 20px;
-    border-radius: 10px;
-    background: rgba(16, 43, 36, 0.92);
-    color: #ffffff;
-}
-
-.style-caption span {
-    display: block;
-    margin-bottom: 4px;
-    color: #cbb795;
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 1.5px;
-}
-
-.style-caption h3 {
-    font-size: 20px;
-}
-
-
-/* Arrows */
-
-.style-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+.slider-button {
     width: 48px;
     height: 48px;
+    flex: 0 0 48px;
     border: 0;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.94);
-    color: #183b32;
+    background: #183b32;
+    color: #ffffff;
     font-size: 34px;
     line-height: 1;
     cursor: pointer;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.14);
-    z-index: 5;
+    display: grid;
+    place-items: center;
+    transition: 0.2s ease;
+    z-index: 2;
+}
+
+.slider-button:hover {
+    background: #28584b;
+    transform: scale(1.04);
+}
+
+.slider-controls {
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.pause-button {
+    border: 1px solid #ccd6d1;
+    background: #ffffff;
+    color: #183b32;
+    padding: 8px 17px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+#slideCounter {
+    color: #68736f;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   ONE ROOM — DIFFERENT STYLES
+   ========================================================= */
+
+.style-section {
+    background: #f5f8f6;
+}
+
+.style-showcase {
+    display: grid;
+    grid-template-columns: 1.5fr 0.5fr;
+    gap: 25px;
+    align-items: stretch;
+}
+
+.style-main-image {
+    position: relative;
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    padding: 10px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.07);
+}
+
+.style-main-image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.style-main-label {
+    position: absolute;
+    left: 25px;
+    bottom: 25px;
+    padding: 10px 15px;
+    background: rgba(24, 59, 50, 0.92);
+    color: #ffffff;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.style-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.style-option {
+    border: 2px solid transparent;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 7px;
+    cursor: pointer;
+    text-align: left;
     transition: 0.2s ease;
 }
 
-.style-arrow:hover {
-    transform: translateY(-50%) scale(1.05);
+.style-option:hover {
+    transform: translateY(-2px);
 }
 
-.style-prev {
-    left: 18px;
+.style-option.active {
+    border-color: #183b32;
 }
 
-.style-next {
-    right: 18px;
+.style-option img {
+    width: 100%;
+    height: 125px;
+    object-fit: contain;
+    background: #f7f7f7;
+    border-radius: 7px;
 }
 
-
-/* Dots */
-
-.style-dots {
-    display: flex;
-    justify-content: center;
-    gap: 9px;
-    margin-top: 22px;
-}
-
-.style-dot {
-    width: 9px;
-    height: 9px;
-    padding: 0;
-    border: 0;
-    border-radius: 50%;
-    background: #c8d2cd;
-    cursor: pointer;
-}
-
-.style-dot.active {
-    width: 25px;
-    border-radius: 10px;
-    background: #183b32;
-}
-
-
-/* Message underneath */
-
-.styles-message {
-    max-width: 720px;
-    margin: 45px auto 0;
-    text-align: center;
-}
-
-.styles-message strong {
+.style-option span {
     display: block;
-    margin-bottom: 8px;
-    font-size: 20px;
-}
-
-.styles-message p {
-    color: #68736f;
+    padding: 9px 5px 4px;
+    color: #34423d;
+    font-size: 12px;
+    font-weight: 700;
 }
 
 
@@ -529,7 +534,6 @@ button {
     background: #ffffff;
     border: 1px solid #e4eae7;
     border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.035);
 }
 
 .service-icon {
@@ -750,7 +754,7 @@ button {
    ========================================================= */
 
 .cta-section {
-    padding: 95px 0;
+    padding: 90px 0;
     background: #183b32;
     color: #ffffff;
 }
@@ -791,23 +795,13 @@ button {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
     gap: 60px;
-    padding: 65px 0;
+    padding: 60px 0;
 }
-
-
-/* Real logo on dark footer */
 
 .footer-logo {
-    display: inline-block;
-    margin-bottom: 20px;
-    padding: 10px 12px;
-    background: #ffffff;
-    border-radius: 8px;
-}
-
-.footer-logo img {
-    width: 175px;
+    width: 190px;
     height: auto;
+    margin-bottom: 18px;
 }
 
 .footer-grid p {
@@ -853,16 +847,12 @@ button {
 
 @media (max-width: 900px) {
 
-    .main-nav {
-        gap: 15px;
-    }
-
     .hero-grid {
         grid-template-columns: 1fr;
     }
 
     .hero-image-wrapper {
-        max-width: 760px;
+        max-width: 800px;
         width: 100%;
         margin: 0 auto;
     }
@@ -883,10 +873,22 @@ button {
         margin: 0 auto;
     }
 
+    .style-showcase {
+        grid-template-columns: 1fr;
+    }
+
+    .style-options {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .style-option img {
+        height: 140px;
+    }
+
     .footer-grid {
         grid-template-columns: 1fr 1fr;
     }
-
 }
 
 
@@ -897,11 +899,11 @@ button {
 @media (max-width: 700px) {
 
     .header-inner {
-        min-height: 70px;
+        min-height: 68px;
     }
 
-    .brand img {
-        width: 145px;
+    .header-logo {
+        width: 135px;
     }
 
     .menu-toggle {
@@ -910,18 +912,14 @@ button {
 
     .main-nav {
         position: absolute;
-        top: 70px;
+        top: 68px;
         left: 0;
         right: 0;
-
         display: none;
-
         flex-direction: column;
         align-items: stretch;
         gap: 0;
-
         padding: 12px 4%;
-
         background: #ffffff;
         border-bottom: 1px solid #e9eeeb;
     }
@@ -939,9 +937,8 @@ button {
         margin: 8px 0;
     }
 
-
     .hero {
-        padding: 60px 0 70px;
+        padding: 55px 0 65px;
     }
 
     .hero h1 {
@@ -953,65 +950,60 @@ button {
         font-size: 16px;
     }
 
-    .hero-image {
-        aspect-ratio: 3 / 2;
-    }
-
     .hero-badge {
         left: 12px;
         bottom: 15px;
     }
 
-
     .section {
-        padding: 75px 0;
+        padding: 70px 0;
     }
 
+    .portfolio-slider {
+        gap: 5px;
+    }
 
-    .portfolio-grid {
+    .portfolio-slide {
         grid-template-columns: 1fr;
+        padding: 10px;
+        gap: 10px;
     }
 
-
-    .portfolio-card {
-        grid-template-columns: 1fr 1fr;
+    .portfolio-image img {
+        max-height: none;
     }
 
-    .portfolio-image {
-        min-height: 220px;
+    .slider-button {
+        width: 40px;
+        height: 40px;
+        flex: 0 0 40px;
+        font-size: 28px;
     }
-
 
     .services-grid,
     .process-grid {
         grid-template-columns: 1fr;
     }
 
-
-    .style-caption {
-        left: 15px;
-        bottom: 15px;
-        padding: 11px 14px;
+    .style-options {
+        grid-template-columns: 1fr;
     }
 
-    .style-caption h3 {
-        font-size: 16px;
+    .style-option {
+        display: grid;
+        grid-template-columns: 110px 1fr;
+        align-items: center;
+        gap: 10px;
     }
 
-    .style-arrow {
-        width: 40px;
-        height: 40px;
-        font-size: 28px;
+    .style-option img {
+        width: 110px;
+        height: 80px;
     }
 
-    .style-prev {
-        left: 10px;
+    .style-option span {
+        padding: 0;
     }
-
-    .style-next {
-        right: 10px;
-    }
-
 
     .footer-grid {
         grid-template-columns: 1fr;
@@ -1043,32 +1035,16 @@ button {
         gap: 18px;
     }
 
-    .portfolio-card {
-        grid-template-columns: 1fr 1fr;
+    .section-heading h2 {
+        font-size: 34px;
     }
 
-    .portfolio-image {
-        min-height: 180px;
+    .hero-image-frame {
+        padding: 6px;
     }
 
-    .image-label {
-        top: 8px;
-        left: 8px;
-        padding: 4px 6px;
-        font-size: 8px;
-    }
-
-    .style-slide img {
-        aspect-ratio: 3 / 2;
-    }
-
-    .style-caption {
-        left: 10px;
-        bottom: 10px;
-    }
-
-    .style-caption h3 {
-        font-size: 14px;
+    .slide-caption strong {
+        font-size: 15px;
     }
 
 }
