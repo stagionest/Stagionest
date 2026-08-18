@@ -1,11 +1,12 @@
-
 /* =========================================================
    STAGIONEST
    WEBSITE JAVASCRIPT
    ========================================================= */
 
 
-/* ================= MOBILE NAVIGATION ================= */
+/* =========================
+   MOBILE NAVIGATION
+   ========================= */
 
 const menuToggle = document.getElementById("menuToggle");
 const mainNav = document.getElementById("mainNav");
@@ -14,19 +15,20 @@ if (menuToggle && mainNav) {
 
   menuToggle.addEventListener("click", function () {
 
-    const isOpen = mainNav.classList.toggle("active");
+    const isOpen = mainNav.classList.toggle("open");
 
     menuToggle.setAttribute(
       "aria-expanded",
       isOpen ? "true" : "false"
     );
 
-    menuToggle.textContent = isOpen ? "✕" : "☰";
+    menuToggle.setAttribute(
+      "aria-label",
+      isOpen ? "Close navigation menu" : "Open navigation menu"
+    );
 
   });
 
-
-  /* Close menu after clicking a navigation link */
 
   const navLinks = mainNav.querySelectorAll("a");
 
@@ -34,14 +36,17 @@ if (menuToggle && mainNav) {
 
     link.addEventListener("click", function () {
 
-      mainNav.classList.remove("active");
+      mainNav.classList.remove("open");
 
       menuToggle.setAttribute(
         "aria-expanded",
         "false"
       );
 
-      menuToggle.textContent = "☰";
+      menuToggle.setAttribute(
+        "aria-label",
+        "Open navigation menu"
+      );
 
     });
 
@@ -50,78 +55,298 @@ if (menuToggle && mainNav) {
 }
 
 
-/* ================= CURRENT YEAR ================= */
+/* =========================
+   PORTFOLIO SLIDER
+   ========================= */
 
-const yearElement = document.getElementById("year");
+const portfolioCards =
+  document.querySelectorAll(".portfolio-card");
 
-if (yearElement) {
-  yearElement.textContent = new Date().getFullYear();
-}
+const previousProject =
+  document.getElementById("prevProject");
+
+const nextProject =
+  document.getElementById("nextProject");
+
+const sliderCounter =
+  document.getElementById("sliderCounter");
+
+let currentProject = 0;
 
 
-/* ================= IMAGE ERROR CHECK ================= */
+function showProject(index) {
 
-/*
-  This does not replace your images.
-  It simply adds a class if an image path is wrong,
-  making the problem easier to identify during testing.
-*/
+  if (!portfolioCards.length) {
+    return;
+  }
 
-const images = document.querySelectorAll("img");
+  if (index < 0) {
+    currentProject = portfolioCards.length - 1;
+  } else if (index >= portfolioCards.length) {
+    currentProject = 0;
+  } else {
+    currentProject = index;
+  }
 
-images.forEach(function (image) {
 
-  image.addEventListener("error", function () {
+  portfolioCards.forEach(function (card, i) {
 
-    image.classList.add("image-error");
-
-    console.warn(
-      "StagioNest image could not be loaded:",
-      image.getAttribute("src")
+    card.classList.toggle(
+      "active",
+      i === currentProject
     );
 
   });
 
-});
+
+  if (sliderCounter) {
+
+    sliderCounter.textContent =
+      (currentProject + 1) +
+      " / " +
+      portfolioCards.length;
+
+  }
+
+}
 
 
-/* ================= SMOOTH ANCHOR OFFSET ================= */
+if (previousProject) {
 
-document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+  previousProject.addEventListener(
+    "click",
+    function () {
 
-  link.addEventListener("click", function (event) {
-
-    const targetId = this.getAttribute("href");
-
-    if (
-      targetId &&
-      targetId !== "#" &&
-      document.querySelector(targetId)
-    ) {
-
-      event.preventDefault();
-
-      const target = document.querySelector(targetId);
-
-      const header = document.querySelector(".site-header");
-
-      const headerHeight = header
-        ? header.offsetHeight
-        : 0;
-
-      const targetPosition =
-        target.getBoundingClientRect().top +
-        window.scrollY -
-        headerHeight -
-        10;
-
-      window.scrollTo({
-        top: targetPosition,
-        behavior: "smooth"
-      });
+      showProject(currentProject - 1);
 
     }
+  );
+
+}
+
+
+if (nextProject) {
+
+  nextProject.addEventListener(
+    "click",
+    function () {
+
+      showProject(currentProject + 1);
+
+    }
+  );
+
+}
+
+
+/* Start portfolio slider */
+
+showProject(0);
+
+
+/* =========================
+   DESIGN STYLE SLIDER
+   ========================= */
+
+const styleSlides =
+  document.querySelectorAll(".style-slide");
+
+const previousStyle =
+  document.getElementById("prevStyle");
+
+const nextStyle =
+  document.getElementById("nextStyle");
+
+const styleCounter =
+  document.getElementById("styleCounter");
+
+let currentStyle = 0;
+
+
+function showStyle(index) {
+
+  if (!styleSlides.length) {
+    return;
+  }
+
+
+  if (index < 0) {
+
+    currentStyle =
+      styleSlides.length - 1;
+
+  } else if (index >= styleSlides.length) {
+
+    currentStyle = 0;
+
+  } else {
+
+    currentStyle = index;
+
+  }
+
+
+  styleSlides.forEach(function (slide, i) {
+
+    slide.classList.toggle(
+      "active",
+      i === currentStyle
+    );
 
   });
 
-});
+
+  if (styleCounter) {
+
+    styleCounter.textContent =
+      (currentStyle + 1) +
+      " / " +
+      styleSlides.length;
+
+  }
+
+}
+
+
+if (previousStyle) {
+
+  previousStyle.addEventListener(
+    "click",
+    function () {
+
+      showStyle(currentStyle - 1);
+
+    }
+  );
+
+}
+
+
+if (nextStyle) {
+
+  nextStyle.addEventListener(
+    "click",
+    function () {
+
+      showStyle(currentStyle + 1);
+
+    }
+  );
+
+}
+
+
+/* Start with EMPTY room first */
+
+showStyle(0);
+
+
+/* =========================
+   AUTO STYLE SLIDESHOW
+   ========================= */
+
+let styleTimer;
+
+
+function startStyleSlideshow() {
+
+  if (styleSlides.length <= 1) {
+    return;
+  }
+
+  styleTimer = setInterval(
+    function () {
+
+      showStyle(currentStyle + 1);
+
+    },
+    5000
+  );
+
+}
+
+
+function stopStyleSlideshow() {
+
+  if (styleTimer) {
+
+    clearInterval(styleTimer);
+
+  }
+
+}
+
+
+/* Start automatic style slideshow */
+
+startStyleSlideshow();
+
+
+/* Pause when user interacts */
+
+const styleShowcase =
+  document.querySelector(".style-showcase");
+
+if (styleShowcase) {
+
+  styleShowcase.addEventListener(
+    "mouseenter",
+    stopStyleSlideshow
+  );
+
+  styleShowcase.addEventListener(
+    "mouseleave",
+    startStyleSlideshow
+  );
+
+}
+
+
+/* =========================
+   CURRENT YEAR
+   ========================= */
+
+const yearElement =
+  document.getElementById("year");
+
+if (yearElement) {
+
+  yearElement.textContent =
+    new Date().getFullYear();
+
+}
+
+
+/* =========================
+   FREE SAMPLE BUTTON
+   ========================= */
+
+const freeSampleButton =
+  document.getElementById("freeSampleButton");
+
+
+if (freeSampleButton) {
+
+  freeSampleButton.addEventListener(
+    "click",
+    function (event) {
+
+      /*
+        TEMPORARY:
+        This currently prevents the empty "#"
+        link from jumping to the top.
+
+        Replace the URL below later with
+        your Google Form link.
+      */
+
+      event.preventDefault();
+
+      alert(
+        "Please contact StagioNest to request your free sample."
+      );
+
+    }
+  );
+
+}
