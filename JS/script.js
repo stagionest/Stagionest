@@ -1,503 +1,263 @@
+document.addEventListener("DOMContentLoaded", () => {
+  /* =========================================
+     MOBILE NAVIGATION
+  ========================================= */
 
-/* =========================================================
-   STAGIONEST
-   WEBSITE JAVASCRIPT
-   FINAL REVISED JAVASCRIPT
-   ========================================================= */
+  const menuToggle = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".main-nav");
 
-
-/* =========================
-   MOBILE NAVIGATION
-   ========================= */
-
-const menuToggle = document.getElementById("menuToggle");
-const mainNav = document.getElementById("mainNav");
-
-if (menuToggle && mainNav) {
-
-  menuToggle.addEventListener("click", function () {
-
-    const isOpen = mainNav.classList.toggle("open");
-
-    menuToggle.setAttribute(
-      "aria-expanded",
-      isOpen ? "true" : "false"
-    );
-
-    menuToggle.setAttribute(
-      "aria-label",
-      isOpen ? "Close navigation menu" : "Open navigation menu"
-    );
-
-  });
-
-
-  const navLinks = mainNav.querySelectorAll("a");
-
-  navLinks.forEach(function (link) {
-
-    link.addEventListener("click", function () {
-
-      mainNav.classList.remove("open");
-
-      menuToggle.setAttribute(
-        "aria-expanded",
-        "false"
-      );
-
-      menuToggle.setAttribute(
-        "aria-label",
-        "Open navigation menu"
-      );
-
+  if (menuToggle && nav) {
+    menuToggle.addEventListener("click", () => {
+      const isOpen = nav.classList.toggle("active");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
     });
 
-  });
-
-}
-
-
-/* =========================
-   PORTFOLIO SLIDER
-   ========================= */
-
-const portfolioCards =
-  document.querySelectorAll(".portfolio-card");
-
-const previousProject =
-  document.getElementById("prevProject");
-
-const nextProject =
-  document.getElementById("nextProject");
-
-const sliderCounter =
-  document.getElementById("sliderCounter");
-
-const portfolioSlider =
-  document.getElementById("portfolioSlider");
-
-let currentProject = 0;
-let portfolioTimer = null;
-let portfolioPaused = false;
-
-
-function showProject(index) {
-
-  if (!portfolioCards.length) {
-    return;
-  }
-
-  if (index < 0) {
-    currentProject = portfolioCards.length - 1;
-  } else if (index >= portfolioCards.length) {
-    currentProject = 0;
-  } else {
-    currentProject = index;
+    nav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("active");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
   }
 
 
-  portfolioCards.forEach(function (card, i) {
+  /* =========================================
+     GENERIC SLIDER
+  ========================================= */
 
-    card.classList.toggle(
-      "active",
-      i === currentProject
-    );
+  function createSlider({
+    slideSelector,
+    previousId,
+    nextId,
+    counterId,
+    containerSelector,
+    interval
+  }) {
+    const slides = Array.from(document.querySelectorAll(slideSelector));
+    const previousButton = document.getElementById(previousId);
+    const nextButton = document.getElementById(nextId);
+    const counter = document.getElementById(counterId);
+    const container = document.querySelector(containerSelector);
 
-  });
+    if (!slides.length) return;
 
+    let currentIndex = 0;
+    let timer = null;
+    let touchStartX = 0;
+    let touchEndX = 0;
 
-  if (sliderCounter) {
+    /* -----------------------------------------
+       SHOW SLIDE
+    ----------------------------------------- */
 
-    sliderCounter.textContent =
-      (currentProject + 1) +
-      " / " +
-      portfolioCards.length;
+    function render(index) {
+      if (index < 0) {
+        index = slides.length - 1;
+      }
 
-  }
+      if (index >= slides.length) {
+        index = 0;
+      }
 
-}
+      currentIndex = index;
 
+      slides.forEach((slide, i) => {
+        const isActive = i === currentIndex;
 
-function startPortfolioSlideshow() {
+        slide.classList.toggle("active", isActive);
+        slide.setAttribute("aria-hidden", String(!isActive));
+      });
 
-  if (portfolioCards.length <= 1) {
-    return;
-  }
-
-  clearInterval(portfolioTimer);
-
-  portfolioTimer = setInterval(function () {
-
-    if (!portfolioPaused) {
-      showProject(currentProject + 1);
+      if (counter) {
+        counter.textContent = `${currentIndex + 1} / ${slides.length}`;
+      }
     }
 
-  }, 6000);
 
-}
+    /* -----------------------------------------
+       STOP AUTOPLAY
+    ----------------------------------------- */
 
-
-function stopPortfolioSlideshow() {
-
-  clearInterval(portfolioTimer);
-  portfolioTimer = null;
-
-}
-
-
-if (previousProject) {
-
-  previousProject.addEventListener(
-    "click",
-    function () {
-
-      showProject(currentProject - 1);
-      startPortfolioSlideshow();
-
-    }
-  );
-
-}
-
-
-if (nextProject) {
-
-  nextProject.addEventListener(
-    "click",
-    function () {
-
-      showProject(currentProject + 1);
-      startPortfolioSlideshow();
-
-    }
-  );
-
-}
-
-
-/* Pause portfolio autoplay while the user is viewing/interacting with it. */
-
-if (portfolioSlider) {
-
-  portfolioSlider.addEventListener(
-    "mouseenter",
-    function () {
-      portfolioPaused = true;
-    }
-  );
-
-  portfolioSlider.addEventListener(
-    "mouseleave",
-    function () {
-      portfolioPaused = false;
-    }
-  );
-
-  portfolioSlider.addEventListener(
-    "focusin",
-    function () {
-      portfolioPaused = true;
-    }
-  );
-
-  portfolioSlider.addEventListener(
-    "focusout",
-    function () {
-      portfolioPaused = false;
-    }
-  );
-
-}
-
-
-/* Start portfolio slider. */
-
-showProject(0);
-startPortfolioSlideshow();
-
-
-/* =========================
-   DESIGN STYLE SLIDER
-   ========================= */
-
-const styleSlides =
-  document.querySelectorAll(".style-slide");
-
-const previousStyle =
-  document.getElementById("prevStyle");
-
-const nextStyle =
-  document.getElementById("nextStyle");
-
-const styleCounter =
-  document.getElementById("styleCounter");
-
-const styleShowcase =
-  document.querySelector(".style-showcase");
-
-let currentStyle = 0;
-let styleTimer = null;
-let stylePaused = false;
-
-
-function showStyle(index) {
-
-  if (!styleSlides.length) {
-    return;
-  }
-
-
-  if (index < 0) {
-
-    currentStyle =
-      styleSlides.length - 1;
-
-  } else if (index >= styleSlides.length) {
-
-    currentStyle = 0;
-
-  } else {
-
-    currentStyle = index;
-
-  }
-
-
-  styleSlides.forEach(function (slide, i) {
-
-    slide.classList.toggle(
-      "active",
-      i === currentStyle
-    );
-
-  });
-
-
-  if (styleCounter) {
-
-    styleCounter.textContent =
-      (currentStyle + 1) +
-      " / " +
-      styleSlides.length;
-
-  }
-
-}
-
-
-function startStyleSlideshow() {
-
-  if (styleSlides.length <= 1) {
-    return;
-  }
-
-  /* Prevent duplicate timers. */
-  clearInterval(styleTimer);
-
-  styleTimer = setInterval(function () {
-
-    if (!stylePaused) {
-      showStyle(currentStyle + 1);
+    function stopAutoPlay() {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
     }
 
-  }, 5000);
 
-}
+    /* -----------------------------------------
+       START / RESTART AUTOPLAY
+    ----------------------------------------- */
 
+    function restartAutoPlay() {
+      stopAutoPlay();
 
-function stopStyleSlideshow() {
-
-  clearInterval(styleTimer);
-  styleTimer = null;
-
-}
-
-
-if (previousStyle) {
-
-  previousStyle.addEventListener(
-    "click",
-    function () {
-
-      showStyle(currentStyle - 1);
-      startStyleSlideshow();
-
-    }
-  );
-
-}
-
-
-if (nextStyle) {
-
-  nextStyle.addEventListener(
-    "click",
-    function () {
-
-      showStyle(currentStyle + 1);
-      startStyleSlideshow();
-
-    }
-  );
-
-}
-
-
-showStyle(0);
-startStyleSlideshow();
-
-
-/* Pause style slideshow while the user is interacting. */
-
-if (styleShowcase) {
-
-  styleShowcase.addEventListener(
-    "mouseenter",
-    function () {
-      stylePaused = true;
-    }
-  );
-
-  styleShowcase.addEventListener(
-    "mouseleave",
-    function () {
-      stylePaused = false;
-    }
-  );
-
-  styleShowcase.addEventListener(
-    "focusin",
-    function () {
-      stylePaused = true;
-    }
-  );
-
-  styleShowcase.addEventListener(
-    "focusout",
-    function () {
-      stylePaused = false;
-    }
-  );
-
-}
-
-
-/* =========================
-   IMAGE ERROR HANDLING
-   =========================
-
-   If an image path is wrong or a file is missing, do not allow
-   the browser to display the filename as broken-image text.
-*/
-
-const allImages =
-  document.querySelectorAll("img");
-
-allImages.forEach(function (image) {
-
-  image.addEventListener("error", function () {
-
-    image.classList.add("image-error");
-    image.alt = "";
-
-    /*
-      Try the most likely alternate filename for the
-      Minimalist City style if the original name is unavailable.
-    */
-
-    if (
-      image.src.includes("minimalist-city-living-room.webp") &&
-      !image.dataset.fallbackTried
-    ) {
-
-      image.dataset.fallbackTried = "true";
-
-      image.src =
-        "Images/virtual-staging-minimalist-city-living-room.webp";
-
+      if (slides.length > 1) {
+        timer = setInterval(() => {
+          showNext();
+        }, interval);
+      }
     }
 
-  });
 
-});
+    /* -----------------------------------------
+       NEXT / PREVIOUS
+    ----------------------------------------- */
 
-
-
-
-/* Pause autoplay while the user touches a slider on mobile. */
-
-[portfolioSlider, styleShowcase].forEach(function (slider) {
-  if (!slider) return;
-
-  slider.addEventListener("touchstart", function () {
-
-    if (slider === portfolioSlider) {
-      portfolioPaused = true;
+    function showNext() {
+      render(currentIndex + 1);
+      restartAutoPlay();
     }
 
-    if (slider === styleShowcase) {
-      stylePaused = true;
+    function showPrevious() {
+      render(currentIndex - 1);
+      restartAutoPlay();
     }
 
-  }, { passive: true });
 
+    /* -----------------------------------------
+       BUTTONS
+    ----------------------------------------- */
 
-  slider.addEventListener("touchend", function () {
-
-    if (slider === portfolioSlider) {
-      portfolioPaused = false;
-      startPortfolioSlideshow();
+    if (nextButton) {
+      nextButton.addEventListener("click", showNext);
     }
 
-    if (slider === styleShowcase) {
-      stylePaused = false;
-      startStyleSlideshow();
+    if (previousButton) {
+      previousButton.addEventListener("click", showPrevious);
     }
 
-  }, { passive: true });
 
-});
+    /* -----------------------------------------
+       TOUCH / SWIPE SUPPORT
+    ----------------------------------------- */
 
+    if (container) {
+      container.addEventListener(
+        "touchstart",
+        (event) => {
+          if (!event.touches || !event.touches.length) return;
 
-/* =========================
-   CURRENT YEAR
-   ========================= */
-
-const yearElement =
-  document.getElementById("year");
-
-if (yearElement) {
-
-  yearElement.textContent =
-    new Date().getFullYear();
-
-}
-
-
-/* =========================
-   ACCESSIBILITY / KEYBOARD
-   ========================= */
-
-document.addEventListener("keydown", function (event) {
-
-  if (event.key === "Escape" && mainNav) {
-
-    mainNav.classList.remove("open");
-
-    if (menuToggle) {
-
-      menuToggle.setAttribute(
-        "aria-expanded",
-        "false"
+          touchStartX = event.touches[0].clientX;
+          touchEndX = touchStartX;
+        },
+        { passive: true }
       );
 
-      menuToggle.setAttribute(
-        "aria-label",
-        "Open navigation menu"
+      container.addEventListener(
+        "touchmove",
+        (event) => {
+          if (!event.touches || !event.touches.length) return;
+
+          touchEndX = event.touches[0].clientX;
+        },
+        { passive: true }
       );
 
+      container.addEventListener(
+        "touchend",
+        () => {
+          const swipeDistance = touchEndX - touchStartX;
+          const minimumSwipeDistance = 50;
+
+          if (Math.abs(swipeDistance) >= minimumSwipeDistance) {
+            if (swipeDistance < 0) {
+              showNext();
+            } else {
+              showPrevious();
+            }
+          }
+
+          touchStartX = 0;
+          touchEndX = 0;
+        },
+        { passive: true }
+      );
     }
 
+
+    /* -----------------------------------------
+       INITIALIZE
+    ----------------------------------------- */
+
+    render(0);
+    restartAutoPlay();
   }
 
+
+  /* =========================================
+     PORTFOLIO BEFORE / AFTER SLIDER
+     ========================================= */
+
+  createSlider({
+    slideSelector: ".portfolio-card",
+    previousId: "prevProject",
+    nextId: "nextProject",
+    counterId: "sliderCounter",
+    containerSelector: ".portfolio-slider",
+    interval: 6000
+  });
+
+
+  /* =========================================
+     ONE ROOM — DIFFERENT POSSIBILITIES SLIDER
+     ========================================= */
+
+  createSlider({
+    slideSelector: ".style-slide",
+    previousId: "prevStyle",
+    nextId: "nextStyle",
+    counterId: "styleCounter",
+    containerSelector: ".style-showcase",
+    interval: 5000
+  });
+
+
+  /* =========================================
+     IMAGE ERROR HANDLING
+  ========================================= */
+
+  document.querySelectorAll("img").forEach((image) => {
+    image.addEventListener("error", () => {
+      /*
+       * Special fallback for the Minimalist City image
+       * in case the primary filename/path is unavailable.
+       */
+
+      if (
+        image.src.includes("minimalist-city-living-room") &&
+        !image.dataset.fallbackUsed
+      ) {
+        image.dataset.fallbackUsed = "true";
+
+        image.src =
+          "Images/minimalist-city-living-room.webp";
+      }
+    });
+  });
+
+
+  /* =========================================
+     CURRENT YEAR
+  ========================================= */
+
+  const yearElement = document.getElementById("currentYear");
+
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+  }
+
+
+  /* =========================================
+     ESCAPE KEY
+     CLOSES MOBILE MENU
+  ========================================= */
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && nav && menuToggle) {
+      nav.classList.remove("active");
+      menuToggle.setAttribute("aria-expanded", "false");
+    }
+  });
 });
